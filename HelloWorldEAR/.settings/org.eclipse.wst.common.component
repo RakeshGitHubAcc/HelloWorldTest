@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="HelloWorldEAR">
+        <wb-resource deploy-path="/" source-path="/"/>
+        <dependent-module archiveName="HelloWorld.war" deploy-path="/" handle="module:/resource/HelloWorld/HelloWorld">
+            <dependent-object>Module_1459232027036</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
