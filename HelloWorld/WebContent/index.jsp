@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
-Hello World (Github)!!!
+Hello World test (Github)!!!
 <form name="helloForm" action="HelloServlet" method="post">
 Name: <input type="text" name="userName" size="20" maxlength="50">
 <input type="submit" name="Submit" value="Submit">
