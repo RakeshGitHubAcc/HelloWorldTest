@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+id="WebApp_ID" 
+version="3.0">
+  <display-name>RestfulWsJersey2</display-name>
+  <!-- <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list> -->
+   <security-role>
+     	<description>Admin user</description>
+     	<role-name>admin</role-name>
+   	</security-role>
+  <security-constraint>
+   <!-- Specifies the part of the application to be authenticated -->
+   <web-resource-collection>
+    <web-resource-name>Secure Task Services</web-resource-name>
+    <!-- Denotes which URI patterns needs to be protected. -->
+       <url-pattern>/rest/HelloService/*</url-pattern>
+        <!-- Only POST, PUT & DELETE calls are authenticated. Omitting http-method tag 
+       altogether will secure all access to the url-pattern above -->
+     <!--   <http-method>POST</http-method>
+       <http-method>PUT</http-method>
+       <http-method>DELETE</http-method> -->
+   </web-resource-collection>
+     <!-- Specifies which roles defined in tomcat-users.xml have access to the resources. -->
+    <auth-constraint>
+       <role-name>admin</role-name>
+    </auth-constraint>
+     <!-- Requests are processed without encryption -->
+    <user-data-constraint>
+       <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+   <!-- Denotes the authentication method, which in our case is BASIC -->
+ <login-config>
+    <auth-method>BASIC</auth-method>
+ </login-config>
+  <servlet>
+      <servlet-name>Jersey RESTful Application</servlet-name>
+      <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+         <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>com.test.service;com.test.filter</param-value>
+         </init-param>
+      </servlet>
+   <servlet-mapping>
+   <servlet-name>Jersey RESTful Application</servlet-name>
+      <url-pattern>/rest/*</url-pattern>
+   </servlet-mapping>  
+</web-app>
